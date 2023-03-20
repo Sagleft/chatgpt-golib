@@ -2,7 +2,6 @@ package gptlib
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
@@ -74,9 +73,10 @@ func (c *chatGPT) SendRequest(data RequestData) (string, error) {
 		return "", fmt.Errorf("send chat completion request: %w", err)
 	}
 
-	jsonByes, _ := json.Marshal(response)
-	fmt.Println(string(jsonByes))
+	return getResponseText(response), nil
+}
 
+func getResponseText(response *gpt3.ChatCompletionResponse) string {
 	dataArray := []string{}
 	for _, data := range response.Choices {
 		if data.Message.Content != "" {
@@ -85,5 +85,5 @@ func (c *chatGPT) SendRequest(data RequestData) (string, error) {
 	}
 
 	result := strings.Join(dataArray, "\n")
-	return strings.TrimLeft(result, "\n"), nil
+	return strings.TrimLeft(result, "\n")
 }
