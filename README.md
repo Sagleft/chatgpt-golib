@@ -24,3 +24,11 @@ result:
 ```
 response: According to recent estimates, our Milky Way galaxy contains about 100-400 billion stars. However, this is only a rough estimate and the exact number may be much higher or lower than this range.
 ```
+
+
+
+---
+
+![image](https://github.com/Sagleft/Sagleft/raw/master/image.png)
+
+### :globe_with_meridians: [Telegram канал](https://t.me/+VIvd8j6xvm9iMzhi)
