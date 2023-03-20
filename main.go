@@ -10,7 +10,7 @@ import (
 )
 
 type Client interface {
-	Request(RequestData) (string, error)
+	SendRequest(RequestData) (string, error)
 }
 
 type RequestData struct {
@@ -34,7 +34,7 @@ type chatGPT struct {
 	conn gpt3.Client
 }
 
-func (c *chatGPT) Request(data RequestData) (string, error) {
+func (c *chatGPT) SendRequest(data RequestData) (string, error) {
 	if data.Role == "" {
 		data.Role = "user"
 	}
