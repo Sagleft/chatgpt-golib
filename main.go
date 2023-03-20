@@ -42,11 +42,10 @@ func (c *chatGPT) SendRequest(data RequestData) (string, error) {
 		data.MaxTokens = 1000
 	}
 
-	var ctx context.Context
-	var ctxCancel func()
-	if data.Timeout == 0 {
-		ctx = context.Background()
-	} else {
+	ctx := context.Background()
+	ctxCancel := func() {}
+
+	if data.Timeout != 0 {
 		ctx, ctxCancel = context.WithTimeout(context.Background(), data.Timeout)
 	}
 	defer ctxCancel()
