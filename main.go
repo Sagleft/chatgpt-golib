@@ -2,6 +2,7 @@ package gptlib
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
@@ -72,6 +73,9 @@ func (c *chatGPT) SendRequest(data RequestData) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("send chat completion request: %w", err)
 	}
+
+	jsonByes, _ := json.Marshal(response)
+	fmt.Println(string(jsonByes))
 
 	dataArray := []string{}
 	for _, data := range response.Choices {
